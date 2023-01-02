@@ -38,6 +38,7 @@ public class AI : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+        Gizmos.DrawLine(this.transform.position, new Vector3(this.transform.position.x + safeDistance, this.transform.position.y, this.transform.position.z));
     }
 
     private void Stop()
