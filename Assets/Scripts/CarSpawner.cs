@@ -7,29 +7,41 @@ using Random = UnityEngine.Random;
 
 public class CarSpawner : MonoBehaviour
 {
-    public GameObject[] spawnObject;
-    public Vector3 spawnPosition;
-    public int timeTillNextSpawn = 3;
-    
+    //public List<Car> cars;
+    public List<GameObject> objectPrefab;
+    public int timeTillSpawn;
+    //public Vector3 spawnPosition;
+
     float timer;
+    Vector3 spawnOffset = new Vector3(10, 0, 0);
+    
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0;
-        Instantiate(Spawn(), transform);
+        timer = 3;
+        timeTillSpawn = 3;
+        //StartCoroutine(SpawnTimer());
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= timeTillNextSpawn) Instantiate(Spawn(), transform);
+        if (timer >= timeTillSpawn) Instantiate(Spawn(), transform);
     }
 
-    private GameObject Spawn()
+    public GameObject Spawn()
     {
-        var randomIndex = Random.Range(0, spawnObject.Length);
+        var randomIndex = Random.Range(0, objectPrefab.Count);
         timer = 0;
-        return spawnObject[randomIndex];
+        return objectPrefab[randomIndex];
     }
+
+    //IEnumerator SpawnTimer()
+    //{
+    //    yield return new WaitForSeconds(2);
+    //    var randomIndex = Random.Range(0, objectPrefab.Count);
+    //    Instantiate(objectPrefab[randomIndex], transform);
+    //    StartCoroutine(SpawnTimer());
+    //}
 }
