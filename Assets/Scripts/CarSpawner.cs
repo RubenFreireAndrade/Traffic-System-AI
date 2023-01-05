@@ -18,7 +18,7 @@ public class CarSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 3;
+        timer = 1;
         timeTillSpawn = 3;
         //StartCoroutine(SpawnTimer());
     }
@@ -27,7 +27,7 @@ public class CarSpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= timeTillSpawn) Instantiate(Spawn(), transform);
+        if (timer >= timeTillSpawn) Instantiate(Spawn(), transform.position + spawnOffset, Quaternion.Euler(0, 90, 0));
     }
 
     public GameObject Spawn()

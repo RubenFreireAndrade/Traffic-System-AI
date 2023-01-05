@@ -8,7 +8,7 @@ public class AI : MonoBehaviour
 {
     public GameObject Car;
     public float speed = 5.0f;
-    public float safeDistance = 5.0f;
+    public float safeDistance = 8.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var ray = new Ray(this.transform.position, this.transform.right);
+        var ray = new Ray(this.transform.position, this.transform.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, safeDistance))
         {
