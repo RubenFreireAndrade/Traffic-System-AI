@@ -1096,7 +1096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001553415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.2, y: 0.429, z: -8.74}
+  m_LocalPosition: {x: -63.84, y: 0.429, z: -8.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1235,8 +1235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c627e1983e2ff449bd48383c59dbea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Car: {fileID: 1027148796}
+  rb: {fileID: 1027148798}
+  Car: {fileID: 0}
   speed: 5
+  maxSpeed: 0
   safeDistance: 5
 --- !u!54 &1027148798
 Rigidbody:

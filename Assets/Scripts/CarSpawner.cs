@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class CarSpawner : MonoBehaviour
@@ -27,7 +28,8 @@ public class CarSpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= timeTillSpawn) Instantiate(Spawn(), transform.position + spawnOffset, Quaternion.Euler(0, 90, 0));
+        if (timer >= timeTillSpawn) Instantiate(Spawn(), transform);
+        //.position + spawnOffset, Quaternion.Euler(0, 90, 0)
     }
 
     public GameObject Spawn()

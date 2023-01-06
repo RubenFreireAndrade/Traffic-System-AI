@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: -4391118543807401912}
   - component: {fileID: 7515316258883276601}
   - component: {fileID: 5392739128600086658}
+  - component: {fileID: -8057685410928863264}
   m_Layer: 0
   m_Name: Taxi(Copy)
   m_TagString: Car
@@ -384,7 +385,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &7515316258883276601
@@ -396,7 +397,7 @@ BoxCollider:
   m_GameObject: {fileID: 1646981259178978}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.49816865, z: 2.3597183}
   m_Center: {x: 0, y: 0.25091568, z: -0.0068151355}
@@ -412,9 +413,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c627e1983e2ff449bd48383c59dbea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: -4391118543807401912}
   Car: {fileID: 1646981259178978}
-  speed: 6
+  accel: 20
+  maxSpeed: 12
   safeDistance: 5
+--- !u!136 &-8057685410928863264
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1 &1770694637400948
 GameObject:
   m_ObjectHideFlags: 0
