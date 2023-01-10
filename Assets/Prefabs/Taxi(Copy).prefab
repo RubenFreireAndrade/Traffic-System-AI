@@ -345,6 +345,8 @@ GameObject:
   - component: {fileID: 7515316258883276601}
   - component: {fileID: 5392739128600086658}
   - component: {fileID: -8057685410928863264}
+  - component: {fileID: -1770687493954986279}
+  - component: {fileID: -2260444029638260441}
   m_Layer: 0
   m_Name: Taxi(Copy)
   m_TagString: Car
@@ -360,7 +362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646981259178978}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -66.835304, y: 0.11339378, z: -6.305438}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -408,7 +410,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646981259178978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c627e1983e2ff449bd48383c59dbea9, type: 3}
   m_Name: 
@@ -416,8 +418,9 @@ MonoBehaviour:
   rb: {fileID: -4391118543807401912}
   Car: {fileID: 1646981259178978}
   accel: 20
-  maxSpeed: 12
-  safeDistance: 5
+  maxSpeed: 11
+  safeDistance: 6
+  brakingPower: 4
 --- !u!136 &-8057685410928863264
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -428,10 +431,39 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Height: 2.5
   m_Direction: 2
-  m_Center: {x: 0, y: 0.3, z: 0}
+  m_Center: {x: 0, y: 0.32, z: 0}
+--- !u!114 &-1770687493954986279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a1f51e7c6de004c89899d355979a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  rotSpeed: 100
+  stopDistance: 2
+  isReachedDestination: 0
+--- !u!114 &-2260444029638260441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c243c31e2a77645991607c010a13cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWaypoint: {fileID: 0}
 --- !u!1 &1770694637400948
 GameObject:
   m_ObjectHideFlags: 0

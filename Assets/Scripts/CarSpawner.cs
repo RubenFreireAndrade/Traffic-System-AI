@@ -8,35 +8,55 @@ using Random = UnityEngine.Random;
 
 public class CarSpawner : MonoBehaviour
 {
-    //public List<Car> cars;
-    public List<GameObject> objectPrefab;
-    public int timeTillSpawn;
-    //public Vector3 spawnPosition;
+    [SerializeField]
+    private float timer;
+    [SerializeField]
+    private int timeTillSpawn;
+    //public List<GameObject> objectPrefab;
+    public GameObject[] objectPrefab;
 
-    float timer;
     Vector3 spawnOffset = new Vector3(10, 0, 0);
     
     // Start is called before the first frame update
     void Start()
     {
-        timer = 1;
+        timer = 2;
         timeTillSpawn = 3;
-        //StartCoroutine(SpawnTimer());
+        //StartCoroutine(Spawn());
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= timeTillSpawn) Instantiate(Spawn(), transform);
-        //.position + spawnOffset, Quaternion.Euler(0, 90, 0)
+        if (timer >= timeTillSpawn) Spawn();//Instantiate()
     }
 
-    public GameObject Spawn()
+    //IEnumerator Spawn()
+    //{
+    //    var randomIndex = Random.Range(0, objectPrefab.Length);
+    //    GameObject obj = Instantiate(objectPrefab[randomIndex]);
+    //    Transform child = transform.GetChild(0);
+    //    obj.GetComponent<WaypointNavigator>().currentWaypoint = child.GetComponent<Waypoint>();
+    //    obj.transform.position = child.position;
+
+    //    yield return new WaitForEndOfFrame();
+    //    //var randomIndex = Random.Range(0, objectPrefab.Count);
+    //    //timer = 0;
+    //    //return objectPrefab[randomIndex];
+    //}
+
+    GameObject Spawn()
     {
-        var randomIndex = Random.Range(0, objectPrefab.Count);
+        var randomIndex = Random.Range(0, objectPrefab.Length);
+        GameObject obj = Instantiate(objectPrefab[randomIndex]);
+        //GameObject obj = objectPrefab;
+        Transform child = transform.GetChild(0);
+        obj.GetComponent<WaypointNavigator>().currentWaypoint = child.GetComponent<Waypoint>();
+        obj.transform.position = child.position;
         timer = 0;
-        return objectPrefab[randomIndex];
+
+        return obj;
     }
 
     //IEnumerator SpawnTimer()

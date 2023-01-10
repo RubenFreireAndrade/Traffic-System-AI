@@ -6,11 +6,14 @@ using UnityEngine;
 
 public class AI : MonoBehaviour
 {
-    public Rigidbody rb;
-    public GameObject Car;
+    [SerializeField]
+    private Rigidbody rb;
+    [SerializeField]
+    private GameObject Car;
     public float accel = 5.0f;
     public float maxSpeed;
     public float safeDistance = 8.0f;
+    public float brakingPower = 4.0f;
 
 
     // Start is called before the first frame update
@@ -52,9 +55,7 @@ public class AI : MonoBehaviour
 
     private void Stop()
     {
-        rb.velocity = Vector3.zero;
-        //rb.AddForce(transform.forward brakingPower)
-        //Car.transform.position += new Vector3(0, 0, 0);
+        rb.AddForce(transform.forward * brakingPower);
     }
 
     private void Move()
@@ -63,7 +64,5 @@ public class AI : MonoBehaviour
         {
             rb.AddForce(transform.forward * accel);
         }
-        Debug.Log(rb.transform.position);
-        //Car.transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
     }
 }
