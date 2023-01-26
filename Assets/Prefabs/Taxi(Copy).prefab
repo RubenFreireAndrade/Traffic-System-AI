@@ -342,11 +342,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4870167790249810}
   - component: {fileID: -4391118543807401912}
-  - component: {fileID: 7515316258883276601}
-  - component: {fileID: 5392739128600086658}
   - component: {fileID: -8057685410928863264}
   - component: {fileID: -1770687493954986279}
   - component: {fileID: -2260444029638260441}
+  - component: {fileID: -7885178465521213019}
+  - component: {fileID: 42482486318300464}
+  - component: {fileID: -566491428833499152}
   m_Layer: 0
   m_Name: Taxi(Copy)
   m_TagString: Car
@@ -363,7 +364,7 @@ Transform:
   m_GameObject: {fileID: 1646981259178978}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -66.835304, y: 0.11339378, z: -6.305438}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4786165216473404}
@@ -390,37 +391,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7515316258883276601
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646981259178978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.49816865, z: 2.3597183}
-  m_Center: {x: 0, y: 0.25091568, z: -0.0068151355}
---- !u!114 &5392739128600086658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646981259178978}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c627e1983e2ff449bd48383c59dbea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: -4391118543807401912}
-  Car: {fileID: 1646981259178978}
-  accel: 20
-  maxSpeed: 11
-  safeDistance: 6
-  brakingPower: 4
 --- !u!136 &-8057685410928863264
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -430,7 +400,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1646981259178978}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.35
   m_Height: 2.5
   m_Direction: 2
@@ -447,9 +417,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a1f51e7c6de004c89899d355979a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidBody: {fileID: -4391118543807401912}
+  canMove: 0
+  isOnTrigger: 0
   speed: 10
   rotSpeed: 100
-  stopDistance: 2
+  stopDistance: 1
   isReachedDestination: 0
 --- !u!114 &-2260444029638260441
 MonoBehaviour:
@@ -464,6 +437,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWaypoint: {fileID: 0}
+--- !u!114 &-7885178465521213019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c627e1983e2ff449bd48383c59dbea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  safeDistance: 5
+--- !u!65 &42482486318300464
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.7, z: 2.2}
+  m_Center: {x: 0, y: 0.3, z: 0}
+--- !u!114 &-566491428833499152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64cd1322793706449aa7bd46d3f07186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1770694637400948
 GameObject:
   m_ObjectHideFlags: 0

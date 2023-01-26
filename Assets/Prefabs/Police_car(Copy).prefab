@@ -342,11 +342,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4870167790249810}
   - component: {fileID: -5482275865780669301}
-  - component: {fileID: -8851191383258493832}
-  - component: {fileID: 4366370946452998441}
   - component: {fileID: 2297610796613772166}
   - component: {fileID: 8601336047437774412}
   - component: {fileID: -8407231664725889496}
+  - component: {fileID: -6759076588525102475}
+  - component: {fileID: 851956915041040225}
   m_Layer: 0
   m_Name: Police_car(Copy)
   m_TagString: Car
@@ -363,7 +363,7 @@ Transform:
   m_GameObject: {fileID: 1646981259178978}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4786165216473404}
@@ -390,37 +390,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &-8851191383258493832
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646981259178978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.51723295, z: 2.3605766}
-  m_Center: {x: 0, y: 0.24138352, z: -0.00020074844}
---- !u!114 &4366370946452998441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646981259178978}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c627e1983e2ff449bd48383c59dbea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: -5482275865780669301}
-  Car: {fileID: 1646981259178978}
-  accel: 20
-  maxSpeed: 14
-  safeDistance: 6
-  brakingPower: 4
 --- !u!136 &2297610796613772166
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -430,7 +399,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1646981259178978}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.4
   m_Height: 2.5
   m_Direction: 2
@@ -447,9 +416,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a1f51e7c6de004c89899d355979a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  rigidBody: {fileID: -5482275865780669301}
+  canMove: 0
+  isOnTrigger: 0
+  speed: 12
   rotSpeed: 100
-  stopDistance: 2
+  stopDistance: 1
   isReachedDestination: 0
 --- !u!114 &-8407231664725889496
 MonoBehaviour:
@@ -464,6 +436,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWaypoint: {fileID: 0}
+--- !u!114 &-6759076588525102475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c627e1983e2ff449bd48383c59dbea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  safeDistance: 5
+--- !u!65 &851956915041040225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646981259178978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.7, z: 2.2}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1 &1770694637400948
 GameObject:
   m_ObjectHideFlags: 0
