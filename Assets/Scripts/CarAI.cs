@@ -7,42 +7,37 @@ public class CarAI : StateMachine
 {
     public float speed = 10f;
     public float rotSpeed = 100f;
-    public float stopDistance = 1f;
     public Waypoint currentWaypoint;
 
-    public BoxCollider avoidZone;
-    public CapsuleCollider forwardViewZone;
-    public CapsuleCollider rightViewZone;
-    public CapsuleCollider leftViewZone;
+    private float stopDistance = 10f;
 
     protected override BaseState GetInitialState()
     {
-        avoidZone = GetComponents<BoxCollider>()[1];
-        var viewZones = GetComponents<CapsuleCollider>();
-        forwardViewZone = viewZones[0];
-        rightViewZone = viewZones[1];
-        leftViewZone = viewZones[2];
-
         return new GoToDestination(this);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnSensorEnter(string sensorName, Collider other)
     {
-        GetCurrentState().OnTriggerEnter(other);
+        GetCurrentState().OnSensorEnter(sensorName, other);
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnSensorExit(string sensorName, Collider other)
     {
-        GetCurrentState().OnTriggerExit(other);
-    }
-
-    private CarAiState GetCurrentState()
-    {
-        return (CarAiState)currentState;
+        GetCurrentState().OnSensorExit(sensorName, other);
     }
 
     public void SelfDestruct()
     {
         Destroy(gameObject);
+    }
+
+    public float GetStopDist()
+    {
+        return stopDistance;
+    }
+
+    public CarAiState GetCurrentState()
+    {
+        return (CarAiState)currentState;
     }
 }

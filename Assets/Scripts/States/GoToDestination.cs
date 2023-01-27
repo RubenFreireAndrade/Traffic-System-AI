@@ -18,20 +18,39 @@ public class GoToDestination : CarAiState
 
     public override void Update()
     {
-        if (GetAgent().transform.position != destination)
+        base.Update();
+
+        if (visibleTrafficLight)
         {
-            Move();
+            var distToTrafficLight = Utils.CalculateDist(GetAgent().transform.position, visibleTrafficLight.transform.position);
+            if (distToTrafficLight <= GetAgent().GetStopDist() && visibleTrafficLight.GetActiveColor() == Color.red)
+            {
+                ChangeState(new StopForLights(GetAgent()));
+                return;
+            }
         }
+
+        foreach (var car in carsInFront)
+        {
+            var distToCarInFront = Utils.CalculateDist(GetAgent().transform.position, car.position);
+            if (distToCarInFront <= GetAgent().GetStopDist())
+            {
+                if (Utils.IsCarInSensor(car, carsToTheLeft)) continue;
+
+                ChangeState(new StopForTraffic(GetAgent()));
+                return;
+            }
+        }
+
+        Move();
     }
 
     private void Move()
     {
-        Vector3 destinationDirection = destination - GetAgent().transform.position;
-        destinationDirection.y = 0;
+        Vector3 destinationDirection = Utils.CalculateDir(GetAgent().transform.position, destination);
+        float destinationDistance = Utils.CalculateDist(GetAgent().transform.position, destination);
 
-        float destinationDistance = destinationDirection.magnitude;
-
-        if (destinationDistance >= GetAgent().stopDistance)
+        if (destinationDistance >= 1f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(destinationDirection);
             GetAgent().transform.rotation = Quaternion.RotateTowards(GetAgent().transform.rotation, targetRotation, GetAgent().rotSpeed * 10 * Time.deltaTime);

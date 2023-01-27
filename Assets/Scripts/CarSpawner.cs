@@ -10,8 +10,8 @@ public class CarSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 2;
-        timeTillSpawn = 3;
+        timer = 5;
+        timeTillSpawn = 6;
     }
 
     // Update is called once per frame
@@ -24,10 +24,12 @@ public class CarSpawner : MonoBehaviour
     GameObject Spawn()
     {
         var randomIndex = Random.Range(0, objectPrefab.Length);
-        GameObject obj = Instantiate(objectPrefab[randomIndex]);
+
         Transform child = transform.GetChild(0);
-        obj.GetComponent<CarAI>().currentWaypoint = child.GetComponent<Waypoint>();
-        obj.transform.position = child.position;
+        var firstWaypoint = child.GetComponent<Waypoint>();
+
+        GameObject obj = Instantiate(objectPrefab[randomIndex], firstWaypoint.transform);
+        obj.GetComponent<CarAI>().currentWaypoint = firstWaypoint;
         timer = 0;
 
         return obj;

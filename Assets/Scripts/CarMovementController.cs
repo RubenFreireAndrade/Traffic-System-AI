@@ -41,7 +41,7 @@ public class CarMovementController : MonoBehaviour
             //
             if (isOnTrigger)
             {
-                if (!trafficLight.IsGreenLightOn())
+                if (!trafficLight)
                 {
                     canMove = false;
                 }

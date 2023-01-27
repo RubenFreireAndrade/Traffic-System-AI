@@ -57,18 +57,16 @@ public class TrafficLightManager : MonoBehaviour
     private void ChangeColor(int index)
     {
         renderer.material.color = colors[index];
-        //if (index == 0) isGreenLightOn = false;
-        //else if (index == 1) isGreenLightOn = true;
-    }
-
-    public bool IsGreenLightOn()
-    {
-        //return isGreenLightOn;
-        return true;
+        currentIndex = index;
     }
 
     public int GetColorIndex()
     {
         return currentIndex;
+    }
+
+    public Color GetActiveColor()
+    {
+        return colors[currentIndex];
     }
 }
