@@ -7,7 +7,6 @@ public class BaseState
 {
     public string name;
     protected StateMachine stateMachine;
-    protected MovementSM _stateM;
 
     public BaseState(string name, StateMachine stateMachine)
     {

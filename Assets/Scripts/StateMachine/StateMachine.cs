@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    BaseState currentState;
+    protected BaseState currentState;
 
     void Start()
     {
@@ -20,7 +20,6 @@ public class StateMachine : MonoBehaviour
     public void ChangeState(BaseState newState)
     {
         currentState.OnExit();
-
         currentState = newState;
         currentState.OnEnter();
     }
@@ -35,5 +34,4 @@ public class StateMachine : MonoBehaviour
         string content = currentState != null ? currentState.name : "{no current state}";
         GUILayout.Label($"<color='white'><size=40>{content}</size></color>");
     }
-    //public abstract StateMachine RunCurrentState();
 }

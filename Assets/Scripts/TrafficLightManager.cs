@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class TrafficLightManager : MonoBehaviour
 {
-    public bool isGreenLightOn = false;
+    //public bool isGreenLightOn = false;
+    public TrafficLightManager masterReplicate;
+    public TrafficLightManager masterReverse;
 
     private Renderer renderer;
     private Color[] colors;
@@ -26,6 +28,16 @@ public class TrafficLightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(masterReplicate)
+        {
+            ChangeColor(masterReplicate.GetColorIndex());
+            return;
+        }
+        if(masterReverse)
+        {
+            ChangeColor((colors.Length - 1) - masterReverse.GetColorIndex());
+            return;
+        }
         timer += Time.deltaTime;
         if (timer > timeTillChange)
         {
@@ -45,12 +57,18 @@ public class TrafficLightManager : MonoBehaviour
     private void ChangeColor(int index)
     {
         renderer.material.color = colors[index];
-        if (index == 0) isGreenLightOn = false;
-        else if (index == 1) isGreenLightOn = true;
+        //if (index == 0) isGreenLightOn = false;
+        //else if (index == 1) isGreenLightOn = true;
     }
 
     public bool IsGreenLightOn()
     {
-        return isGreenLightOn;
+        //return isGreenLightOn;
+        return true;
+    }
+
+    public int GetColorIndex()
+    {
+        return currentIndex;
     }
 }

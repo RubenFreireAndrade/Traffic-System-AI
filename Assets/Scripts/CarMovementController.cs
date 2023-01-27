@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CarMovementController : MonoBehaviour
 {
-    public Rigidbody rigidBody;
-
     public bool canMove;
     public bool isOnTrigger;
     public float speed = 10f;
@@ -68,21 +66,7 @@ public class CarMovementController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("TrafficLightTrigger"))
-        {
-            isOnTrigger = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("TrafficLightTrigger"))
-        {
-            isOnTrigger = false;
-        }
-    }
+  
 
     public void SetDestination(Vector3 destination)
     {

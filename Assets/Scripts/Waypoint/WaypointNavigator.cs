@@ -32,11 +32,12 @@ public class WaypointNavigator : MonoBehaviour
             {
                 currentWaypoint = currentWaypoint.branches[Random.Range(0, currentWaypoint.branches.Count - 1)];
             }
-            //else
-            //{
 
-            //}
-
+            if (currentWaypoint.nextWaypoint == null)
+            {
+                Destroy(gameObject);
+                return;
+            }
             currentWaypoint = currentWaypoint.nextWaypoint;
             controller.SetDestination(currentWaypoint.GetPosition());
         }
