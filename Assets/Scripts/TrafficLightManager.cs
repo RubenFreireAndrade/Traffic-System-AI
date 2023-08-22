@@ -16,6 +16,7 @@ public class TrafficLightManager : MonoBehaviour
 
     [SerializeField] private float timer = 0;
     [SerializeField] private int timeTillChange = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +34,13 @@ public class TrafficLightManager : MonoBehaviour
             ChangeColor(masterReplicate.GetColorIndex());
             return;
         }
+
         if(masterReverse)
         {
             ChangeColor((colors.Length - 1) - masterReverse.GetColorIndex());
             return;
         }
+        
         timer += Time.deltaTime;
         if (timer > timeTillChange)
         {

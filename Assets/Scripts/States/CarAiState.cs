@@ -29,23 +29,23 @@ public class CarAiState : BaseState
 
     public virtual void OnSensorEnter(string sensorName, Collider other)
     {
-        if (sensorName == "ForwardViewZone" && other.gameObject.tag == "TrafficLightManager")
+        if (sensorName == "ForwardViewZone" && other.CompareTag("TrafficLightManager"))
         {
             visibleTrafficLight = other.gameObject.GetComponentInChildren<TrafficLightManager>();
         }
-        if (sensorName == "AvoidViewZone" && other.gameObject.tag == "Car")
+        if (sensorName == "AvoidViewZone" && other.CompareTag("Car"))
         {
             carsTooClose.Add(other.transform);
         }
-        if (sensorName == "ForwardViewZone" && other.gameObject.tag == "Car")
+        if (sensorName == "ForwardViewZone" && other.CompareTag("Car"))
         {
             carsInFront.Add(other.transform);
         }
-        if (sensorName == "RightViewZone" && other.gameObject.tag == "Car")
+        if (sensorName == "RightViewZone" && other.CompareTag("Car"))
         {
             carsToTheRight.Add(other.transform);
         }
-        if (sensorName == "LeftViewZone" && other.gameObject.tag == "Car")
+        if (sensorName == "LeftViewZone" && other.CompareTag("Car"))
         {
             carsToTheLeft.Add(other.transform);
         }
